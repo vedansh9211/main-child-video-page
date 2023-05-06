@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Child Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 30px;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function closeVideo() {
+            var videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = '';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Child Page</h1>
+        <div id="video-container" class="video-container">
+            <!-- Video iframe will be added dynamically -->
+        </div>
+        <a href="javascript:history.back()" class="button" onclick="closeVideo()">Back</a>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var videoContainer = document.getElementById('video-container');
+            var videoUrl = "https://www.youtube.com/embed/8835heTiSAk?t=20";
+            var iframe = document.createElement('iframe');
+            iframe.src = videoUrl;
+            iframe.allow = "autoplay; encrypted-media";
+            iframe.allowFullscreen = true;
+            videoContainer.appendChild(iframe);
+        };
+    </script>
+</body>
+</html>
